@@ -1,4 +1,5 @@
 # Uniswap Fee Calculator 
+[![](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/) <br>
 Uniswap Fee Calculator is a tool for you to get the approximated fee APR from every trading pair on Uniswap. <br> Currently it supports Polygon, Optimism, and Arbitrum. Users can easily expand the supported trading pairs and chains by editing the config file. 
 
 ## Getting Started 
