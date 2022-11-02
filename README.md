@@ -1,18 +1,16 @@
 # Uniswap Fee Calculator 
 Uniswap Fee Calculator is a tool for you to get the approximated fee APR from every trading pair on Uniswap. <br> Currently it supports Polygon, Optimism, and Arbitrum. Users can easily expand the supported trading pairs and chains by editing the config file. 
 
-## How To Run It 
-### 1. Clone this repo to your local 
-```
+## Getting Started 
+```bash
 git clone git@github.com:ZooWallet/Uniswap-Fee-Calculator.git
+cd uniswap-fee-calculator
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
-### 2. Install the required packages 
-```
-pip install -r requirements.txt 
-```
-
-### 3. Call `getUniswapAPRs()` to get a dictionary of fee APR
+### Get Fee APR
 ```python
 UniswapAPRs = getUniswapAPRs() 
 ```
