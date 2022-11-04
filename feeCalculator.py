@@ -37,8 +37,7 @@ def fetchData(
     cousorTime = startTime
     timeStep = 86400
     scriptDir = Path(__file__).parent.absolute()
-    # rawDataFilePath = f'{scriptDir}/../data//{chain}_swap.txt'
-    rawDataFilePath = f'{scriptDir}//{ticker}_swap.txt'
+    rawDataFilePath = f'{scriptDir}/data/{ticker}_swap.txt'
     if force:
         if os.path.exists(rawDataFilePath):
             os.remove(rawDataFilePath)
@@ -70,7 +69,7 @@ def fetchData(
                 totalCount += 1
                 f.write(json.dumps(o) + "\n")
             cousorTime = tmpCousorTime
-            # print(tmpCousorTime)
+            print(tmpCousorTime)
         else:
             print(
                 f'${cousorTime} response.status_code: ${response.status_code}, will retry')
@@ -85,13 +84,13 @@ def Raw2CSV(configData, switch=False):
     ticker = configData['ticker']
 
     scriptDir = Path(__file__).parent.absolute()
-    file1 = open(f'{scriptDir}/{ticker}_swap.txt', 'r')
+    file1 = open(f'{scriptDir}/data/{ticker}_swap.txt', 'r')
     lines = file1.readlines()
     if len(lines) != 0:
         fileOutputDir = f'{scriptDir}'
         if not os.path.exists(fileOutputDir):
             os.mkdir(fileOutputDir)
-        fileOutputFileth = f'{fileOutputDir}/{ticker}_swap.csv'
+        fileOutputFileth = f'{fileOutputDir}/data/{ticker}_swap.csv'
         if os.path.exists(fileOutputFileth):
             os.remove(fileOutputFileth)
         f = open(fileOutputFileth, 'w')
@@ -144,29 +143,38 @@ def Raw2CSV(configData, switch=False):
             ]
             blockNumber += 1
             cwriter.writerow(row)
-
+    file1.close()
+    f.close()
 
 # TickRange = something like [100,200]
+
+
 def getEarnedFee(prevTick, curTick, tickRange, feeTier):
-    if curTick > tickRange[0] and curTick < tickRange[1]:  # In range
+    if prevTick >= tickRange[0] and prevTick <= tickRange[1] and curTick >= tickRange[0] and curTick <= tickRange[1]:  # In range
         # ROI made from the swap
         earnedFee = abs(curTick - prevTick) / \
             (tickRange[1] - tickRange[0]) * feeTier
 
         return earnedFee
+    elif prevTick < tickRange[0] < curTick:
+        earnedFee = abs(curTick - tickRange[0]) / \
+            (tickRange[1] - tickRange[0]) * feeTier
+        return earnedFee
+    elif prevTick > tickRange[1] > curTick:
+        earnedFee = abs(curTick - tickRange[1]) / \
+            (tickRange[1] - tickRange[0]) * feeTier
+        return earnedFee
     else:  # if out-of-range, no fee
         return 0
 
 
-def getFeeAPR(configData, tickNumber):
+def getFeeAPR(configData, tickNumber, data):
 
     chain = configData['chain']
     pool = configData['pool']
     feeTier = configData['feeTier']
     ticker = configData['ticker']
 
-    # read data
-    data = pd.read_csv(f'{ticker}_swap.csv')
     # put data in order, sort by [timestamp, log_index]
     data = data.drop_duplicates(subset=["tx_hash"], keep="first")
     data = data.sort_values(by=['block_number'])
