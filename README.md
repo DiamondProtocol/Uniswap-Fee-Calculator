@@ -104,6 +104,6 @@ There are four functions: <br>
 `getEarnedFee()`: Calculates the Fee APR for a single swap <br>
 `getFeeAPR()`: Reads corresponding csv file and calculate Fee APR, and return a dictionary <br>
 
-### run.py
+### getFeeAPR.py
 Traverse each trading pair in `config.py` to calculate the fee APR for each of them. Will return a dictionary of Fee APRs. 
 
