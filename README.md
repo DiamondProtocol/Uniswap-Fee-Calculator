@@ -12,8 +12,19 @@ pip install -r requirements.txt
 ```
 
 ### Get Fee APR
-```python
-UniswapAPRs = getUniswapAPRs() 
+run the command below, and it will get the fee APR results based on the parameters in `config.py`. By default, the backtest is conducted with the past 3 days data, and 5000 ticks of liquidity range (about +- 65% around spot price)
+```bash
+python3 getFeeAPR.py 
+```
+The result will be saved into `result.json` in the same directory
+```json
+{
+    "ARB_WETHUSDC_0.05%": 16.588645734512603, 
+    "ARB_GMXWETH_1%": 25.84230167178008, 
+    "OP_WETHUSDC_0.05%": 17.206828558559593, 
+    "MATIC_WETHUSDC_0.05%": 14.86813104467027, 
+    "ETH_WETHUSDC_0.05%": 16.45983594670466
+}
 ```
 
 ## Behind The Scenes 
