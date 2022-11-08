@@ -105,5 +105,5 @@ There are four functions: <br>
 `getFeeAPR()`: Reads corresponding csv file and calculate Fee APR, and return a dictionary <br>
 
 ### getFeeAPR.py
-Traverse each trading pair in `config.py` to calculate the fee APR for each of them. Will return a dictionary of Fee APRs. 
+Traverse each trading pair in `config.py` to calculate the fee APR for each of them. Will save the result into `result.json`. 
 
