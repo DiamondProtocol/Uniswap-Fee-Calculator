@@ -43,7 +43,7 @@ Keeps all the parameters, including: <br>
 # the backtest period for Fee APR and the range we wanna test on 
 backtestParams = {
     "period" : 3, # backtest based on the past 3 days of data
-    "tickNumber" : 5000 # backtest based on a 50% range of liquidity provision 
+    "tickNumber" : 5000 # backtest based on a 65% range of liquidity provision 
 }
 ```
 
