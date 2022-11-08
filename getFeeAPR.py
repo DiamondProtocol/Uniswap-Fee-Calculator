@@ -44,7 +44,7 @@ def getUniswapFeeAPRs():
     return UniswapFeeAPRs
 
 
-
-UniswapFeeAPRs = getUniswapFeeAPRs()
-with open('result.json', 'w') as fp:
-    json.dump(UniswapFeeAPRs, fp)
+if __name__ == '__main__':
+    UniswapFeeAPRs = getUniswapFeeAPRs()
+    with open('result.json', 'w') as fp:
+        json.dump(UniswapFeeAPRs, fp)
