@@ -29,11 +29,20 @@ config = {
         "chain": "Polygon",
         "pool": "0x45dda9cb7c25131df268515131f647d726f50608",
         "feeTier": 0.0005
+    },
+    "ETH_WETHUSDC_0.05%": {
+        "ticker": "ETH_WETHUSDC_0.05%",
+        "chain": "Ethereum",
+        "pool": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+        "feeTier": 0.0005
     }
 
 }
+
 # the subgraph url we use to query data from different chains
 subgraphURLs = {
     "Arbitrum": "https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal",
     "Optimism": "https://api.thegraph.com/subgraphs/name/ianlapham/optimism-post-regenesis",
-    "Polygon": "https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-polygon"}
+    "Polygon": "https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-polygon",
+    "Ethereum": "https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3"
+    }

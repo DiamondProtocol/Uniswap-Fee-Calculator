@@ -48,3 +48,5 @@ if __name__ == '__main__':
     UniswapFeeAPRs = getUniswapFeeAPRs()
     with open('result.json', 'w') as fp:
         json.dump(UniswapFeeAPRs, fp)
+
+

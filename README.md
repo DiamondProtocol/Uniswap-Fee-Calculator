@@ -1,6 +1,6 @@
 # Uniswap Fee Calculator 
 [![](https://img.shields.io/badge/python-3.8.10-blue.svg)](https://www.python.org/downloads/) <br>
-Uniswap Fee Calculator is a tool for you to get the approximated fee APR from every trading pair on Uniswap. <br> Currently it supports Polygon, Optimism, and Arbitrum. Users can easily expand the supported trading pairs and chains by editing the config file. 
+Uniswap Fee Calculator is a tool for you to get the approximated fee APR from every trading pair on Uniswap. <br> Currently it supports Ethereum, Polygon, Optimism, and Arbitrum. Users can easily expand the supported trading pairs and chains by editing the config file. 
 
 ## Getting Started 
 ```bash
@@ -64,6 +64,12 @@ config = {
         "chain": "Polygon",
         "pool": "0x45dda9cb7c25131df268515131f647d726f50608",
         "feeTier": 0.0005
+    },
+    "ETH_WETHUSDC_0.05%": {
+        "ticker": "ETH_WETHUSDC_0.05%",
+        "chain": "Ethereum",
+        "pool": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+        "feeTier": 0.0005
     }
 
 }
@@ -75,7 +81,9 @@ config = {
 subgraphURLs = {
     "Arbitrum": "https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal",
     "Optimism": "https://api.thegraph.com/subgraphs/name/ianlapham/optimism-post-regenesis",
-    "Polygon": "https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-polygon"}
+    "Polygon": "https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-polygon",
+    "Ethereum": "https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3"
+    }
 ```
 
 ### feeCalculator.py
